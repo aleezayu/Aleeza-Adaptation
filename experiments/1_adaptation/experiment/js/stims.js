@@ -61,7 +61,11 @@ var exp_catch_trial_idxs = _.sample(_.range(20), 6);
 
 // 10 critical trials with orange and blue 90%
 for (var i = 0; i < 10; i++) {
+<<<<<<< HEAD
 	var t_idx = exposure_trials_probably.length;
+=======
+	var t_idx = exposure_trials_bare.length;
+>>>>>>> 2b8a36b21eeec9d52e9407e2b99f484077dd2f63
 	var col = _.sample(colors);
 	var p = col == "orange" ? "10" : "90";
 	var trial = {
@@ -76,7 +80,11 @@ for (var i = 0; i < 10; i++) {
 }
 
 
+<<<<<<< HEAD
 // 5 critical trials with orange and blue 100%
+=======
+// 4 critical trials with orange and blue 100%
+>>>>>>> 2b8a36b21eeec9d52e9407e2b99f484077dd2f63
 for (var i = 0; i < 5; i++) {
 	var t_idx = exposure_trials_probably.length;
 	var col = _.sample(colors);
@@ -93,7 +101,11 @@ for (var i = 0; i < 5; i++) {
 }
 
 
+<<<<<<< HEAD
 // 5 critical trials with orange and blue 75%
+=======
+// 6 critical trials with orange and blue 75%
+>>>>>>> 2b8a36b21eeec9d52e9407e2b99f484077dd2f63
 for (var i = 0; i < 5; i++) {
 	var t_idx = exposure_trials_probably.length;
 	var col = _.sample(colors);
@@ -111,7 +123,11 @@ for (var i = 0; i < 5; i++) {
 
 // =====================================================================================================
 
+<<<<<<< HEAD
 // bare-biased
+=======
+// BARE-BIASED
+>>>>>>> 2b8a36b21eeec9d52e9407e2b99f484077dd2f63
 
 // 10 critical trials with orange and blue 90%
 for (var i = 0; i < 10; i++) {
@@ -129,9 +145,15 @@ for (var i = 0; i < 10; i++) {
 	exposure_trials_bare.push(trial);
 }
 
+<<<<<<< HEAD
 // 5 critical trials with orange and blue 60%
 for (var i = 0; i < 5; i++) {
 	var t_idx = exposure_trials_bare.length;
+=======
+// 10 critical trials with orange and blue 60%
+for (var i = 0; i < 5; i++) {
+	var t_idx = exposure_trials_probably.length;
+>>>>>>> 2b8a36b21eeec9d52e9407e2b99f484077dd2f63
 	var col = _.sample(colors);
 	var p = col == "orange" ? "40" : "60";
 	var trial = {
@@ -146,9 +168,15 @@ for (var i = 0; i < 5; i++) {
 }	
 
 
+<<<<<<< HEAD
 // 5 critical trials with orange and blue 75%
 for (var i = 0; i < 5; i++) {
 	var t_idx = exposure_trials_bare.length;
+=======
+// 6 critical trials with orange and blue 75%
+for (var i = 0; i < 5; i++) {
+	var t_idx = exposure_trials_probably.length;
+>>>>>>> 2b8a36b21eeec9d52e9407e2b99f484077dd2f63
 	var col = _.sample(colors);
 	var p = col == "orange" ? "75" : "25";
 	var trial = {
