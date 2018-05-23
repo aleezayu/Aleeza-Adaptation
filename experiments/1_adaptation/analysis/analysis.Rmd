@@ -106,52 +106,46 @@ ggplot(catch_trial_perf.all.bare, aes(x=factor(workerid), y=catch_perf)) + geom_
 ## Aggregated results
 
 
-```{r aggregate_plots, echo=FALSE, fig.width=10, fig.height=8}
-
-plot_condition = function(d, plot_title) {
-  drops <- c("modal1","rating1")
-  d2 = d[ , !(names(d) %in% drops)]
-  setnames(d2, old=c("rating2","modal2"), new=c("rating", "modal"))
-
-  drops <- c("modal2","rating2")
-  d3 = d[ , !(names(d) %in% drops)]
-  setnames(d3, old=c("rating1","modal1"), new=c("rating", "modal"))
-
-  drops <- c("modal2", "rating2", "modal1", "rating1")
-  d4 = d[ , !(names(d) %in% drops)]
-  d4$rating = d4$rating_other
-  d4$modal = "other"
-
-  d = rbind(d2, d3, d4)
-
-  d$modal = factor(d$modal)
-  d$percentage_blue_f = factor(d$percentage_blue)
-  d_blue = d %>% filter(., grepl("blue", sentence2))
-  d_orange = d %>% filter(., grepl("orange", sentence2))
-
-  d_orange_reverse = d_orange
-  d_orange_reverse$percentage_blue = 100-d_orange$percentage_blue
-
-  d_comparison = rbind(d_blue, d_orange_reverse)
-  d_comparison$blue= grepl("blue", d_comparison$sentence2)
-  d_comparison$percentage_blue_f = factor(d_comparison$percentage_blue)
-
-  p1 = ggplot(d_comparison, aes(x=percentage_blue, y=rating)) + geom_point(aes(col=modal)) +       geom_smooth(aes(col=modal,linetype=blue), method="loess") + ggtitle(plot_title) + xlab("percentage")
-
-  p2 = ggplot(d_comparison, aes(x=percentage_blue_f, y=rating, fill=modal)) + 
-  geom_boxplot() +
-  ggtitle(plot_title) + xlab("percentage")
-  
-  return(list("p1" = p1, "p2" = p2))
-
-}
-
-
-
-  ps1 = plot_condition(d.bare, "bare-biased")
-
-  ps2 = plot_condition(d.probably, "probably-biased")
-
-  
-  grid.arrange(ps1$p1, ps1$p2, ps2$p1, ps2$p2, ncol=2, nrow=2)
-
+library(tidyr)
+> library(dplyr)
+> data1 = rbind(Condition_2_trials)
+> data2 = rbind(Condition_2_trials)
+> dataother = rbind(Condition_2_trials)
+> data1$rating_other = NULL
+> data1$rating2 = NULL
+> data2$rating1 = NULL
+> data2$rating_other = NULL
+> dataother$rating1 = NULL
+> dataother$rating2 = NULL
+> data1 = data1%>%rename(rating = rating1)
+> data2 = data2%>%rename(rating = rating2)
+> dataother = dataother%>%rename(rating = rating_other)
+> data1$type = "rating1"
+> data2$type = "rating2"
+> dataother$type = "rating_other"
+> data = rbind(data1, data2, dataother)
+> data$modal1 = gsub('"', "", data$modal1)
+> data$modal2 = gsub('"', "", data$modal2)
+> data$color = gsub('"', "", data$color)
+> View(data)
+> data1 = data1%>%rename(modal = modal1)
+> data2 = data2%>%rename(modal = modal2)
+> dataother$modal = 'other'
+> data$modal2 = NULL
+> data1$modal2 = NULL
+> data2$modal1 = NULL
+> dataother$modal1=NULL
+> dataother$modal2=NULL
+> data = rbind(data1, data2, dataother)
+> data = data%>%mutate(percentagetarget = ifelse(color=="blue", percentage_blue, 100-percentage_blue))
+> plot = ggplot(data, aes(x=percentagetarget, y=rating, color=type)) + geom_point()
+> plot
+> plot = ggplot(data, aes(x=percentagetarget, y=rating, color=type)) + geom_point() + geom_smooth()
+> plot
+`geom_smooth()` using method = 'loess'
+> data$color = gsub('"', "", data$color)
+> data = data%>%mutate(percentagetarget = ifelse(color=="blue", percentage_blue, 100-percentage_blue))
+> plot = ggplot(data, aes(x=percentagetarget, y=rating, color=modal)) + geom_point()
+> plot
+> plot = ggplot(data, aes(x=percentagetarget, y=rating, color=modal)) + geom_point() + geom_smooth()
+> plot
