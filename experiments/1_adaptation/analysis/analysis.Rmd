@@ -107,9 +107,9 @@ ggplot(catch_trial_perf.all.bare, aes(x=factor(workerid), y=catch_perf)) + geom_
 
 
 library(tidyr)
-> library(dplyr)
-> data1 = rbind(Condition_2_trials)
-> data2 = rbind(Condition_2_trials)
+library(dplyr)
+data1 = rbind(Condition_2_trials)
+data2 = rbind(Condition_2_trials)
 > dataother = rbind(Condition_2_trials)
 > data1$rating_other = NULL
 > data1$rating2 = NULL
