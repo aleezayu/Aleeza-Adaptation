@@ -1,10 +1,10 @@
 # Adaptation experiment
 
-We have 4 conditions (probably-biased and bare-biased) with a male and female speaker.
+We have 2 conditions (probably-biased and bare-biased) with a male and female speaker.
 
 ## Participants
 
-MTurk participants with US IP addresses and >95% approval. For each condition, we run 80 participants. Within each condition, 20 participants see the male speaker and 20 participants see the female speaker.
+MTurk participants with US IP addresses and >95% approval. For each condition, we run 40 participants. Within each condition, 20 participants see the male speaker and 20 participants see the female speaker.
 
 
 ## Exclusion criteria
