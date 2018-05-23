@@ -221,16 +221,3 @@ aucs.all = rbind(aucs.might_f, aucs.probably_f, aucs.might_m, aucs.probably_m)
 summary(lm(auc_diff ~ speaker * cond, data=aucs.all))
 
 ```
-
-Differences between male and female speaker in use of "other" for maximally certain?
-
-```{r lm_gender_other, echo=FALSE} 
-
-
-summary(lm(rating_other ~ speaker_cond, data=d.might %>% filter(., percentage_blue > 99)))
-
-summary(lm(rating_other ~ speaker_cond, data=d.probably %>% filter(., percentage_blue > 99)))
-
-
-```
-
