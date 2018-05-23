@@ -1,7 +1,7 @@
 ---
 title: "Post-hoc analyses of adaptation experiment"
-author: "Sebastian Schuster"
-date: "2/27/2018"
+author: "Aleeza Yu"
+date: "05/22/2018"
 output: html_document
 ---
 
